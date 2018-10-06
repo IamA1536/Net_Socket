@@ -36,7 +36,8 @@ public class Server {
         for (int i = 0; i < limit; i++) {
             try {
                 Socket ss = ServerConn.accept();
-
+                clinetList.add(ss);
+                new Thread(new ClientMsg(ss, clinetList)).start();
             } catch (IOException e) {
                 e.printStackTrace();
                 System.out.println("Fail to creat a Server!");
